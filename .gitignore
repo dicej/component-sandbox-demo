@@ -1,0 +1,4 @@
+*.wasm
+componentize-py
+__pycache__
+sandbox
