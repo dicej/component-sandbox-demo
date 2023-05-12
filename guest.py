@@ -9,8 +9,8 @@ class Sandbox(sandbox.Sandbox):
         except Exception as e:
             raise Err(str(e))
 
-    def exec(statements: str) -> str:
+    def exec(statements: str):
         try:
-            return json.dumps(exec(statements))
+            exec(statements)
         except Exception as e:
             raise Err(str(e))
