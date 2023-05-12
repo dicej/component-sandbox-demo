@@ -43,15 +43,8 @@ curl -L https://github.com/dicej/componentize-py/releases/download/canary/compon
 
 ## Running the demo
 
-TODO: this won't work yet because (A) `wasmtime` does not yet have a WASI
-Preview 2 implementation
-(https://github.com/bytecodealliance/wasmtime/issues/6370) and (B)
-`wasmtime.bindgen` is using keywords as identifiers, so the code generated for
-WASI Preview 2 is broken anyway
-(https://github.com/bytecodealliance/wasmtime-py/issues/150)
-
 ```
-./componentize-py -d wit -w sandbox componentize guest -o sandbox.wasm
+./componentize-py -d wit -w sandbox componentize guest -o sandbox.wasm --stub-wasi
 python3 -m wasmtime.bindgen sandbox.wasm --out-dir sandbox
-python3 host.py
+python3 host.py "2 + 2"
 ```
