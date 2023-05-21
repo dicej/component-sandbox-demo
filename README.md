@@ -38,7 +38,7 @@ curl -L https://github.com/dicej/componentize-py/releases/download/canary/compon
 ```
 Windows/x86_64:
 ```
-curl -L https://github.com/dicej/componentize-py/releases/download/canary/componentize-py-canary-macos-amd64.tar.gz | tar xz
+curl -L https://github.com/dicej/componentize-py/releases/download/canary/componentize-py-canary-windows-amd64.tar.gz | tar xz
 ```
 
 ## Running the demo
