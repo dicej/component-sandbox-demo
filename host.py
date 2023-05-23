@@ -5,7 +5,8 @@ import json
 import sys
 from threading import Timer
 
-TIMEOUT_SECONDS=5
+TIMEOUT_SECONDS = 5
+MEMORY_LIMIT_BYTES = 20 * 1024 * 1024
 
 args = sys.argv[1:]
 if len(args) == 0:
@@ -23,23 +24,24 @@ engine = Engine(config)
 timer = Timer(TIMEOUT_SECONDS, on_timeout, args=(engine,))
 timer.start()
 
-store = Store(engine)
-store.set_epoch_deadline(1)
+try:
+    store = Store(engine)
+    store.set_epoch_deadline(1)
+    store.set_limits(memory_size=MEMORY_LIMIT_BYTES)
 
-sandbox = Sandbox(store)
-for arg in args[:-1]:
-    result = sandbox.exec(store, arg)
-    if isinstance(result, Err):
-        result = result.value
-        print(f"error: {result}")
-        exit(-1)
+    sandbox = Sandbox(store)
+    for arg in args[:-1]:
+        result = sandbox.exec(store, arg)
+        if isinstance(result, Err):
+            print(f"exec error: {result.value}")
+            exit(-1)
 
-result = sandbox.eval(store, args[-1])
-if isinstance(result, Ok):
-    result = json.loads(result.value)
-    print(f"result: {result}")
-else:
-    result = result.value
-    print(f"error: {result}")
+    result = sandbox.eval(store, args[-1])
+    if isinstance(result, Ok):
+        result = json.loads(result.value)
+        print(f"result: {result}")
+    else:
+        print(f"eval error: {result.value}")
 
-timer.cancel()
+finally:
+    timer.cancel()

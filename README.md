@@ -37,3 +37,29 @@ result: 4
 def foo(): return 42' 'foo()'
 result: 42
 ```
+
+### Time limit
+
+`host.py` enforces a five second timeout on guest execution.  If and when the
+timeout is reached, `wasmtime` will raise a `Trap` error.
+
+```shell-session
+ $ python3 host.py 'while True: pass' '1'
+timeout!
+Traceback (most recent call last):
+  File "/Users/dicej/p/component-sandbox-demo/host.py", line 31, in <module>
+    result = sandbox.exec(store, arg)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+```
+
+### Memory limit
+
+`host.py` limits guest memory usage to 20MB.  Any attempt to allocate beyond
+that limit will fail.
+
+```shell-session
+ $ python3 host.py 'global foo
+foo = bytes(100 * 1024 * 1024)' 'foo[42]'
+exec error: MemoryError
+```
