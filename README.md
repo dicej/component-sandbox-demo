@@ -27,7 +27,7 @@ python3 host.py "2 + 2"
 `host.py` accepts zero or more `exec` strings (e.g. newline-delimited
 statements) followed by a final `eval` string (i.e. an expression).  Note that
 any symbols you declare in an `exec` string must be explicitly added to the
-global scope using `global`.  This ensures it is visible to subsequent `exec`
+global scope using `global`.  This ensures they are visible to subsequent `exec`
 and `eval` strings.
 
 ```shell-session

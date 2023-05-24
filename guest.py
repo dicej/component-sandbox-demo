@@ -8,7 +8,7 @@ def handle(e: Exception):
     if message == '':
         raise Err(f"{type(e).__name__}")
     else:
-        raise Err(f"{type(e).__name__}: {e}")
+        raise Err(f"{type(e).__name__}: {message}")
 
 class Sandbox(sandbox.Sandbox):
     def eval(expression: str) -> str:
