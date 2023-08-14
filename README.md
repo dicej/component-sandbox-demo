@@ -8,16 +8,19 @@ sandboxed Python code snippets from within a Python app.
 ## Prerequisites
 
 * [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py)
-* [`componentize-py`](https://github.com/dicej/componentize-py)
+  * Until https://github.com/bytecodealliance/wasmtime-py/pull/171 is merged, use [this fork](https://github.com/dicej/wasmtime-py)
+* [`componentize-py`](https://github.com/dicej/componentize-py) 0.3.0 or later
 
 ```
-pip install wasmtime componentize-py
+git clone https://github.com/dicej/wasmtime-py
+(cd wasmtime-py && python ci/download-wasmtime.py && python ci/build-rust.py && pip install .)
+pip install componentize-py
 ```
 
 ## Running the demo
 
 ```
-componentize-py -d wit -w sandbox componentize guest -o sandbox.wasm --stub-wasi
+componentize-py -d wit -w sandbox componentize guest -o sandbox.wasm
 python3 -m wasmtime.bindgen sandbox.wasm --out-dir sandbox
 python3 host.py "2 + 2"
 ```

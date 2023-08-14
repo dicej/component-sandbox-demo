@@ -1,4 +1,4 @@
-from sandbox import Sandbox
+from sandbox import Root
 from sandbox.types import Ok, Err
 from wasmtime import Config, Engine, Store
 import json
@@ -29,7 +29,7 @@ try:
     store.set_epoch_deadline(1)
     store.set_limits(memory_size=MEMORY_LIMIT_BYTES)
 
-    sandbox = Sandbox(store)
+    sandbox = Root(store, None)
     for arg in args[:-1]:
         result = sandbox.exec(store, arg)
         if isinstance(result, Err):
