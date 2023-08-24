@@ -1,7 +1,6 @@
 import sandbox
 from sandbox.types import Err
 import json
-import traceback
 
 def handle(e: Exception):
     message = str(e)

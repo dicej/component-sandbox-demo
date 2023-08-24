@@ -7,15 +7,11 @@ sandboxed Python code snippets from within a Python app.
 
 ## Prerequisites
 
-* [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py)
-* [`componentize-py`](https://github.com/dicej/componentize-py) 0.3.0 or later
-
-Note that we must build `wasmtime-py` from source until a release that includes https://github.com/bytecodealliance/wasmtime-py/pull/171 is available.
+* [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py) 12.0.0 or later
+* [`componentize-py`](https://github.com/dicej/componentize-py) 0.3.2 or later
 
 ```
-git clone https://github.com/bytecodealliance/wasmtime-py
-(cd wasmtime-py && python ci/download-wasmtime.py && python ci/build-rust.py && pip install .)
-pip install componentize-py
+pip install --upgrade componentize-py wasmtime
 ```
 
 ## Running the demo
