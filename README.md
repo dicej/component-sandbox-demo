@@ -8,7 +8,7 @@ sandboxed Python code snippets from within a Python app.
 ## Prerequisites
 
 * [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py) 12.0.0 or later
-* [`componentize-py`](https://github.com/dicej/componentize-py) 0.3.2 or later
+* [`componentize-py`](https://github.com/dicej/componentize-py) 0.4.0
 
 ```
 pip install --upgrade componentize-py wasmtime

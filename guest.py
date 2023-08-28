@@ -10,13 +10,13 @@ def handle(e: Exception):
         raise Err(f"{type(e).__name__}: {message}")
 
 class Sandbox(sandbox.Sandbox):
-    def eval(expression: str) -> str:
+    def eval(self, expression: str) -> str:
         try:
             return json.dumps(eval(expression))
         except Exception as e:
             handle(e)
 
-    def exec(statements: str):
+    def exec(self, statements: str):
         try:
             exec(statements)
         except Exception as e:
