@@ -8,7 +8,7 @@ sandboxed Python code snippets from within a Python app.
 ## Prerequisites
 
 * [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py) 12.0.0 or later
-* [`componentize-py`](https://github.com/dicej/componentize-py) 0.4.0
+* [`componentize-py`](https://github.com/dicej/componentize-py) 0.4.2
 
 ```
 pip install --upgrade componentize-py wasmtime
@@ -40,7 +40,7 @@ result: 42
 
 ### Time limit
 
-`host.py` enforces a five second timeout on guest execution.  If and when the
+`host.py` enforces a twenty second timeout on guest execution.  If and when the
 timeout is reached, `wasmtime` will raise a `Trap` error.
 
 ```shell-session
