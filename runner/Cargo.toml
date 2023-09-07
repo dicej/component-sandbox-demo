@@ -1,0 +1,13 @@
+[package]
+name = "runner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.71"
+clap = { version = "4.3.2", features = ["derive"] }
+hex = "0.4.3"
+sha2 = "0.10.7"
+tokio = { version = "1.28.2", features = ["macros", "rt", "rt-multi-thread", "fs"] }
+wasmtime = { git = "https://github.com/bytecodealliance/wasmtime", features = ['component-model']}
+

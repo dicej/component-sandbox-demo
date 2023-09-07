@@ -7,7 +7,7 @@ import sys
 from threading import Timer
 from typing import List, Tuple
 
-TIMEOUT_SECONDS = 20
+TIMEOUT_SECONDS = 5
 MEMORY_LIMIT_BYTES = 20 * 1024 * 1024
 
 class HostEnvironment(environment.HostEnvironment):
@@ -24,6 +24,7 @@ if len(args) == 0:
 
 config = Config()
 config.epoch_interruption = True
+config.cache = True
 
 def on_timeout(engine):
     print("timeout!")
@@ -31,7 +32,6 @@ def on_timeout(engine):
 
 engine = Engine(config)
 timer = Timer(TIMEOUT_SECONDS, on_timeout, args=(engine,))
-timer.start()
 
 try:
     store = Store(engine)
@@ -63,6 +63,9 @@ try:
             terminal_stderr=None
         )
     )
+    
+    timer.start()
+
     for arg in args[:-1]:
         result = sandbox.exec(store, arg)
         if isinstance(result, Err):

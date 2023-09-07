@@ -1,4 +1,8 @@
 *.wasm
+*.cwasm
 componentize-py
 __pycache__
 sandbox
+target
+numpy
+numpy-wasi.tar.gz
