@@ -1,5 +1,9 @@
 # Component Sandbox Demo
 
+**Please note: This example is no longer being maintained.  Please see
+https://github.com/bytecodealliance/componentize-py/tree/main/examples/sandbox
+for an updated, maintained version.**
+
 This is an example of how to use
 [`wasmtime-py`](https://github.com/bytecodealliance/wasmtime-py) and
 [`componentize-py`](https://github.com/dicej/componentize-py) to execute
